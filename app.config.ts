@@ -1,7 +1,7 @@
 // app.config.ts
 import { defineConfig } from "@tanstack/react-start/config";
 import tsConfigPaths from "vite-tsconfig-paths";
-// import path from "path";
+import { cloudflare } from "unenv";
 
 export default defineConfig({
 	vite: {
@@ -10,10 +10,9 @@ export default defineConfig({
 				projects: ["./tsconfig.json"],
 			}),
 		],
-		// resolve: {
-		// 	alias: {
-		// 		"@": path.resolve(__dirname, "./app"),
-		// 	},
-		// },
+	},
+	server: {
+		preset: "cloudflare-module",
+		unenv: cloudflare,
 	},
 });
